@@ -1,0 +1,9 @@
+5,2,2,2,2,2,2
+1,3,2,6,7,5,4
+26707,24206,24560,23337,23533,25116,25114
+20540,2246,5548,3056,2359,3645,3196
+A28M8T2QV8ZYY5
+Laptop
+25 - 31
+WiFi
+Blurred video at some points, cuts out with an almost glitch effect

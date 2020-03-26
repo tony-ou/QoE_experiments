@@ -1,0 +1,9 @@
+5,2,3,3,3,3,2
+1,6,5,4,2,3,7
+25910,29438,24838,26706,26801,24592,25393
+19744,8826,1385,3121,2606,5419,1699
+A17TKHT8FEVH0R
+Desktop
+25 - 31
+Cable network
+Parts of the video would become blurry. I determined whether the length of the blurriness was too long.
