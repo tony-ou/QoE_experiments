@@ -1,9 +1,0 @@
-5,2,2,2,3,2,2
-1,5,2,7,4,3,6
-25426,26338,26087,25946,28315,25324,25725
-20872,4450,4258,3831,6826,5112,3660
-A30Y3H3UJ9QKWV
-Laptop
-25 - 31
-Cable network
-The specific frames where the video got blurry. (Whether or not there was anything happening in the scene when it blurred)
