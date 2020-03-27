@@ -31,9 +31,9 @@ for vid in list_dir:
 
 files = ['./results/' + f for f in listdir('./results') if f.split('.')[-1]=='txt']
 data = []
-data.append(['5,5,-1,0,0,5','n',','.join(lengths)])
+data.append(['5,5,-1,0,0,5','n',','.join(lengths), '1,2,2,2,2,2'])
 fields = ['score', 'video order', 'view time', 'grade time', 'ID', 'device',
-        'age', 'env', 'reason']
+        'age', 'env', 'reason','attention_test']
 for file in files: 
     temp = [line.rstrip('\n') for line in open(file)]
     data.append(temp)
