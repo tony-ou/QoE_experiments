@@ -2,14 +2,13 @@
 <div class="col-md-6 col-md-offset-3" style="text-align:center">
  <h2> <b>Please decide which answer best the impairments in the video affect the video quality. </b> </h2>
 
-    <h3>(If this is the first video aka the reference video, please check the box "Imperceptible Impairment".)</b></h3>
     <h3>Progress: {{count}} / {{num_vids}}</h3>
 </div>
 
 <div class="col-md-6 col-md-offset-3">
     <form action= "next" method="POST" style="text-align:center">
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs">
-            <label class="btn btn-default"><input id="StronglyPositive" name="sentiment" required="" type="radio" value="5" /><h4>Imperceptible Impairment</h4>
+            <label class="btn btn-default"><input id="StronglyPositive" name="sentiment" required="" type="radio" value="5" /><h4>Imperceptible Impairment (i.e. this is the reference video)</h4>
             </label>
             <label class="btn btn-default"><input id="Positive" name="sentiment" required="" type="radio" value="4" /><h4>Perceptible But Not Annoying Impairment</h4>
             </label>
@@ -21,7 +20,7 @@
             </label>
         </div>
 
-        <h2> <b>Next two questions ask impairments that appear in test but not in reference videos. </b> (If last video is the reference video, answer "No" to both questions.) </h2>
+        <h2> <b>Next two questions ask what impairments appeared in the test video. </b> (If last video is the reference video, answer "No" to both questions.) </h2>
         <h3> Did you notice blur (a lower resolution) in last video? </h3>
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs2">
            <label class="btn btn-default"><input id="yes" name="blur" required=""   type="radio" value="1" /><h4>Yes</h4>

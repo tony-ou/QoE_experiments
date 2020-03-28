@@ -1,0 +1,40 @@
+<!-- HIT template: Sentiment-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+{% extends "base.html" %} {% block main %}
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<!-- End instructions --><!-- Categorization Layout -->
+
+    <div  style="text-align:center"> 
+        <h2>The impairments that might appear in this experiment are: <b>stalls and blurs</b>. Below are examples:</h2> 
+    </div>
+
+<div class="row" id="workContent">
+
+<!-- Place the content (in this case a block of text) below. If content is not text then replace with the relevant html element (image, url, video) below. -->
+
+
+    <div  style="text-align:center"> 
+        <h2>Blur</h2> 
+    </div>
+
+
+  <div class="panel-body", style="text-align:center">
+      <video width="1024" height="576" controls="controls" id="myVideo" >
+          <source src='https://github.com/tony-ou/QoE_experiments/raw/master/blur.mp4'>
+      </video>
+  </div>
+    <div  style="text-align:center"> 
+        <h2>Stall</h2> 
+    </div>
+
+  <div class="panel-body", style="text-align:center">
+      <video width="1024" height="576" controls="controls" id="myVideo" >
+          <source src='https://github.com/tony-ou/QoE_experiments/raw/master/stall.mp4'>
+      </video>
+  </div>
+    <form action="start", method="POST"  style="text-align:center">
+  <button type="submit" class="btn btn-primary" onclick="return checkform()">Start test</button>
+  </form>
+</div>
+
+
+  {% endblock %}

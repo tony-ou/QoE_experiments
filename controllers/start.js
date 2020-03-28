@@ -13,6 +13,11 @@ fs.readdir(vid_path, function(err, files) {
     console.log(vid_path + " has " + num_vids + " files");
 });
 
+var post_example = async (ctx, next) => {
+    ctx.render('example.html', {
+    });
+}
+
 var post_start = async (ctx, next) => {
     var mturkID = ctx.request.body.MTurkID;
     var device = ctx.request.body.device;
@@ -173,5 +178,6 @@ module.exports = {
     'POST /grade': post_grade,
     'POST /back2video':post_back2video,
     'POST /next' : post_next,
-    'POST /end' : post_end
+    'POST /end' : post_end,
+    'POST /example' : post_example 
 };
