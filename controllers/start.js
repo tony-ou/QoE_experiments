@@ -14,16 +14,11 @@ fs.readdir(vid_path, function(err, files) {
 });
 
 var post_example = async (ctx, next) => {
-    ctx.render('example.html', {
-    });
-}
-
-var post_start = async (ctx, next) => {
     var mturkID = ctx.request.body.MTurkID;
     var device = ctx.request.body.device;
     var age = ctx.request.body.age;
     var network = ctx.request.body.network;
-    var video_order = [1,2, ...getOder(3,num_vids)];
+    var video_order = [1, ...getOder(2,num_vids)];
     console.log(mturkID, device, age);
     var start = new Date().getTime();
 
@@ -40,22 +35,23 @@ var post_start = async (ctx, next) => {
         grade_time : [],
         start : start
     };
-    var i;
-    //initialize video_time & grade_time
     for (i = 0; i < num_vids; i++)
     {
-    	user.video_time.push(0);
-    	user.grade_time.push(0);
+        user.video_time.push(0);
+        user.grade_time.push(0);
     }
-    
     let value =  Buffer.from(JSON.stringify(user)).toString('base64');
     ctx.cookies.set('name', value);
-    var video_src = video_url + video_order[0] + ".mp4";
+    ctx.render('example.html', {
+    });
+}
+
+var post_start = async (ctx, next) => {
+    var video_src = video_url + "1.mp4";
     // https://github.com/michaelliao/learn-javascript/raw/master/video/vscode-nodejs.mp4
     // very interesting url!
 
     var title = "1/" + num_vids;
-console.log(reference_src)
     ctx.render('video.html', {
         title: title, video_src : video_src
     });
