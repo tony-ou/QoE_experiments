@@ -4,16 +4,18 @@
         <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
             <h2>Instructions for the test</h2>
                 <p>
-                    In this test, you will watch a series of short videos (~20 seconds each) and rate their quality. Please pay close attention to the following guidelines:
+                    In this test, you will watch a series of test videos (~20 seconds each) created from a <b>reference video</b> by adding additional quality impairments at different timestamps. You are going to rate how the impairments in the video affect the video quality and your streaming experience. Note the goal of the experiment is not to gauge the test videos' absolute quality but their relative quality downgrade in comparison the reference videos. Please pay close attention to the following guidelines:
                 </p>
                 <ul>
-                      <li>All the videos are created from a <b>reference video</b> with manually added impairments (e.g. stalls, resolution change, etc. However, you shouldn't consider stalls caused by your network conditions.). So you should rate each video based on how it compares with the <b>reference video</b>. </li>
-                      
-                      <li>Please be sure to watch each video in its <b> full length</b>. We can tell if you skip a video. And please don't refresh the video page when watching. If you have to refresh because network fails, be sure to report this on the last page.</li>
-                      
-                      <li>There is an attention test on the grading page, which asks you to choose impairments that appear in the test video but not in reference video. It is obvious as long as you paid close attention to the video.</li>
+                      <li>An <b>impairment</b> can be any temporal or spatial distortion of the reference video. Some examples are bluring, stalling, tiling, etc. These might or might not be present in the actual test videos. </li>
 
-                      <li>You will watch the <b>reference video</b> first and you need to rate it as <b>Excellent</b> quality, i.e. it doesn't have mannually added impairments. This is the second attention test.</li>
+                      <li>You will watch the <b>reference video</b> first and you must rate it as <b>Imperceptible Impairment</b>. (This is the an <b>attention test</b>) Again, this doesn't mean the reference video is in perfect quality, but just that there's no additional downgrade. </li>
+                      
+                      <li> On the grading page, besides answering how the impairments impact your streaming experience, you will also be asked to select what additional impairments you saw in the test video. (This is an <b>attention test</b>. There is a correct answer and that should be obvious as long as you paid attention to the difference btw test and reference videos.)</li>
+
+
+                      <li>Please be sure to watch each video in its <b> full length</b>. We can tell if you skip a video. And please don't refresh the video page when watching. If you have to refresh because network fails, be sure to report this on the last page.</li>
+
 
                       <li>The survey will end with a question like "what is the quality difference between the test videos". You <b>must</b> give a <b>reasonable answer</b> such as by mentioning what impairments you saw and describing why you rated some test videos higher than others in general language. (meaning you don't have to recollect details of the videos) </li>
 
@@ -76,6 +78,9 @@
                     <option >Yes, I confirm. </option>
                 </select>
             </div>
+
+
+
             <button type="submit" class="btn btn-primary" onclick="return checkform()">Start test</button>
         </form>
         </div>

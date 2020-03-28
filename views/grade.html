@@ -1,27 +1,27 @@
 {% extends "base.html" %} {% block main %}
 <div class="col-md-6 col-md-offset-3" style="text-align:center">
- <h2>Please decide which answer best describes the quality of the video <b> in comparision to </b> the reference video</h2>
+ <h2>Please decide which answer best the impairments in the video affect the video quality. </h2>
 
-    <h3> <b>(If this is the first video aka the reference video, please check the box "Excellent".)</b></h3>
+    <h3> <b>(If this is the first video aka the reference video, please check the box "Imperceptible Impairment".)</b></h3>
     <h3>Progress: {{count}} / {{num_vids}}</h3>
 </div>
 
 <div class="col-md-6 col-md-offset-3">
     <form action= "next" method="POST" style="text-align:center">
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs">
-            <label class="btn btn-default"><input id="StronglyPositive" name="sentiment" required="" type="radio" value="5" /><h4>Excellent (Imperceptible Impairment)</h4>
+            <label class="btn btn-default"><input id="StronglyPositive" name="sentiment" required="" type="radio" value="5" /><h4>Imperceptible Impairment</h4>
             </label>
-            <label class="btn btn-default"><input id="Positive" name="sentiment" required="" type="radio" value="4" /><h4>Good (Perceptible But Not Annoying Impairment)</h4>
+            <label class="btn btn-default"><input id="Positive" name="sentiment" required="" type="radio" value="4" /><h4>Perceptible But Not Annoying Impairment</h4>
             </label>
-            <label class="btn btn-default"><input id="Neutral" name="sentiment" required="" type="radio" value="3" /><h4>Fair (Slightly Annoying Impairment)</h4>
+            <label class="btn btn-default"><input id="Neutral" name="sentiment" required="" type="radio" value="3" /><h4>Slightly Annoying Impairment</h4>
             </label>
-            <label class="btn btn-default"> <input id="Negative" name="sentiment" required="" type="radio" value="2" /><h4>Poor (Annoying Impairment)</h4>
+            <label class="btn btn-default"> <input id="Negative" name="sentiment" required="" type="radio" value="2" /><h4>Annoying Impairment</h4>
             </label>
-            <label class="btn btn-default"> <input id="StronglyNegative" name="sentiment" required="" type="radio" value="1" /><h4>Bad (Very Annoying Impairment)</h4>
+            <label class="btn btn-default"> <input id="StronglyNegative" name="sentiment" required="" type="radio" value="1" /><h4>Very Annoying Impairment</h4>
             </label>
         </div>
 
-        <h3> Which impairment appeared in the test video on last page but not in the reference video? </h3>
+        <h3> Which impairment appeared in the test video but not in the reference video? </h3>
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs2">
            <label class="btn btn-default"><input id="Stall" name="impair" required=""   type="radio" value="1" /><h4>Stall</h4>
             </label>
