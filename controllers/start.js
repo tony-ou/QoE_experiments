@@ -99,7 +99,7 @@ var post_back2video = async (ctx, next) => {
 var post_next = async (ctx, next) => {
     var user = ctx.state.user;
     var grade = ctx.request.body.sentiment;
-    var attention_test = ctx.request.body.impair;
+    var attention_test = Number(ctx.request.body.blur)+ Number(ctx.request.body.stall);
     user.result.push(grade);
     user.test.push(attention_test);
     var end = new Date().getTime();

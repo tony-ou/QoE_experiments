@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% block main %}
 <div class="col-md-6 col-md-offset-3" style="text-align:center">
- <h2>Please decide which answer best the impairments in the video affect the video quality. </h2>
+ <h2> <b>Please decide which answer best the impairments in the video affect the video quality. </b> </h2>
 
-    <h3> <b>(If this is the first video aka the reference video, please check the box "Imperceptible Impairment".)</b></h3>
+    <h3>(If this is the first video aka the reference video, please check the box "Imperceptible Impairment".)</b></h3>
     <h3>Progress: {{count}} / {{num_vids}}</h3>
 </div>
 
@@ -21,16 +21,22 @@
             </label>
         </div>
 
-        <h3> Which impairment appeared in the test video but not in the reference video? </h3>
+        <h2> <b>Next two questions ask impairments that appear in test but not in reference videos. </b> (If last video is the reference video, answer "No" to both questions.) </h2>
+        <h3> Did you notice blur (a lower resolution) in last video? </h3>
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs2">
-           <label class="btn btn-default"><input id="Stall" name="impair" required=""   type="radio" value="1" /><h4>Stall</h4>
+           <label class="btn btn-default"><input id="yes" name="blur" required=""   type="radio" value="1" /><h4>Yes</h4>
             </label>
-            <label class="btn btn-default"><input id="Blur" name="impair" required=""  type="radio" value="2" /><h4>Blur</h4>
+            <label class="btn btn-default"><input id="no" name="blur" required=""  type="radio" value="0" /><h4>No</h4>
             </label>
-            <label class="btn btn-default"><input id="Both" name="impair" required=""   type="radio" value="3" /><h4>Stall & Blur</h4></label>
-            <label class="btn btn-default"><input id="reference" name="impair" required=""   type="radio" value="4" /><h4>This is the reference video</h4>
-            </label>
+        </div>
 
+
+        <h3> Did you notice stalling (pause of length at least 1 second) in last video? </h3>
+        <div class="btn-group-vertical" data-toggle="buttons" id="Inputs3">
+           <label class="btn btn-default"><input id="yes" name="stall" required=""   type="radio" value="4" /><h4>Yes</h4>
+            </label>
+            <label class="btn btn-default"><input id="no" name="stall" required=""  type="radio" value="2" /><h4>No</h4>
+            </label>
         </div>
 
         </br></br>
@@ -63,9 +69,25 @@
             });
             // end highlight
           });
-                $(document).ready(function() {
+         $(document).ready(function() {
             // highlight selected category
             var inputs = $("#Inputs2 input:radio");
+            inputs.change(function(){
+              inputs.parent().removeClass("btn-success");
+              inputs.parent().addClass("btn-default");
+              if($(this).is(":checked")){
+                $(this).parent().removeClass("btn-default");
+                $(this).parent().addClass("btn-success");
+              }else{
+                $(this).parent().removeClass("btn-success");
+                $(this).parent().addClass("btn-default");
+              }
+            });
+            // end highlight
+          });
+                  $(document).ready(function() {
+            // highlight selected category
+            var inputs = $("#Inputs3 input:radio");
             inputs.change(function(){
               inputs.parent().removeClass("btn-success");
               inputs.parent().addClass("btn-default");

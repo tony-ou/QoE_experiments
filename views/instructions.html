@@ -1,31 +1,41 @@
 {% extends "base.html" %} {% block main %}
 <div class="container">
     <div class="row",style="margin-bottom: 30px">
-        <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
-            <h2>Instructions for the test</h2>
-                <p>
-                    In this test, you will watch a series of test videos (~20 seconds each) created from a <b>reference video</b> by adding additional quality impairments at different timestamps. You are going to rate how the impairments in the video affect the video quality and your streaming experience. Note the goal of the experiment is not to gauge the test videos' absolute quality but their relative quality downgrade in comparison the reference videos. Please pay close attention to the following guidelines:
-                </p>
-                <ul>
-                      <li>An <b>impairment</b> can be any temporal or spatial distortion of the reference video. Some examples are bluring, stalling, tiling, etc. These might or might not be present in the actual test videos. </li>
-
-                      <li>You will watch the <b>reference video</b> first and you must rate it as <b>Imperceptible Impairment</b>. (This is the an <b>attention test</b>) Again, this doesn't mean the reference video is in perfect quality, but just that there's no additional downgrade. </li>
-                      
-                      <li> On the grading page, besides answering how the impairments impact your streaming experience, you will also be asked to select what additional impairments you saw in the test video. (This is an <b>attention test</b>. There is a correct answer and that should be obvious as long as you paid attention to the difference btw test and reference videos.)</li>
-
-
-                      <li>Please be sure to watch each video in its <b> full length</b>. We can tell if you skip a video. And please don't refresh the video page when watching. If you have to refresh because network fails, be sure to report this on the last page.</li>
-
-
-                      <li>The survey will end with a question like "what is the quality difference between the test videos". You <b>must</b> give a <b>reasonable answer</b> such as by mentioning what impairments you saw and describing why you rated some test videos higher than others in general language. (meaning you don't have to recollect details of the videos) </li>
-
-                </ul> 
-        </div>
-
+        
 
 
     <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
+            <h2>Instructions for the test</h2>
+                <p>
+                    The goal of the experiment is to gauge how vudei impairments damage viewers' experience. You will watch a series of test videos (~20 seconds each) created from a <b>reference video</b> with  additional quality impairments. You should focus on the difference btw test and reference videos, and decide how impairments damage the video. Please pay close attention to the following guidelines:
+                </p>
+                <ul>
+                      <li>An <b>impairment</b> can be any temporal or spatial distortion. Some examples are bluring, stalling, tiling, etc.  </li>
+
+                      <li>You will watch the <b>reference video</b> first and you must rate it as <b>Imperceptible Impairment</b>. Again, this doesn't mean the reference video is in perfect quality, but just that there's no additional impairments. </li>
+                      
+                      <li> On the grading page, you will also be asked to select what impairments you saw in the test video. (This is an <b>attention test</b>. 
+
+
+                      <li>Please be sure to watch each video in its <b> full length</b>. The button to the next page appears after you finish the video. And please don't refresh video page. If you have to because video fails to load, please report on the last page.
+
+                </ul> 
+            </div>
+
+    <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
+
         <form action="start", method="POST">
+            
+
+            <div class="form-group">
+                <label for="instruction">Have you read the instructions? You might not be paid if the conditions are not met.</label>
+                <select name="instruction" class="form-control" id="network">
+                    <option value="_null" disabled selected></option> 
+                    <option >Yes, I confirm. </option>
+                </select>
+            </div>
+
+
             <h2>Please take the simple survey before the test.</h2>
 
             <div class="form group">
@@ -71,13 +81,6 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="instruction">Have you read the instructions? You might not be paid if the conditions are not met.</label>
-                <select name="instruction" class="form-control" id="network">
-                    <option value="_null" disabled selected></option> 
-                    <option >Yes, I confirm. </option>
-                </select>
-            </div>
 
 
 

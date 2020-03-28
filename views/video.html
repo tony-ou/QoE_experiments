@@ -7,14 +7,26 @@
 
 <!-- Place the content (in this case a block of text) below. If content is not text then replace with the relevant html element (image, url, video) below. -->
   <div class="panel-body", style="text-align:center">
-      <video width="1024" height="576" controls="controls" >
+      <video width="1024" height="576" controls="controls" id="myVideo" >
           <source src={{video_src}}>
       </video>
   </div>
-
-  <form action="grade", method="POST", style="text-align:center">
-      <button type="submit" class="btn btn-primary">Go to Grading</button>
-  </form>
+  <div id="form_container">
+	  <form action="grade" method="POST" style="text-align:center" id="next_page">
+	      <button type="submit" class="btn btn-primary" >Go to Grading</button>
+	  </form>
+  </div>
 </div>
+
+<script>
+
+document.getElementById("form_container").style.display="none";
+            
+
+document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+        document.getElementById("form_container").style.display="block";
+    }
+</script>
 
   {% endblock %}
