@@ -18,7 +18,7 @@ var post_example = async (ctx, next) => {
     var device = ctx.request.body.device;
     var age = ctx.request.body.age;
     var network = ctx.request.body.network;
-    var video_order = [1, ...getOder(2,num_vids)];
+    var video_order = [1, 2, ...getOder(3,num_vids)];
     console.log(mturkID, device, age);
     var start = new Date().getTime();
 
@@ -87,6 +87,11 @@ var post_back2video = async (ctx, next) => {
     var title = user.count + "/" + num_vids;
     if (user.video_order[user.count - 1] == 1){
         ctx.render('video.html', {
+            title: title, video_src : video_src
+        });
+    }
+    else if  (user.video_order[user.count - 1] == 2) {
+        ctx.render('bad_video.html', {
             title: title, video_src : video_src
         });
     }
