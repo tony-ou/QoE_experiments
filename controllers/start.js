@@ -2,7 +2,7 @@
 var getOder = require('../models/random');
 var fs = require('fs');
 
-const vid_folder = "original_videos_Sports_360P_Sports_360P-32d3_0_200k_176";
+const vid_folder = "Soccer_720p_2_500k_360";
 var vid_path = "./videos/" + vid_folder;
 var video_url = "https://github.com/tony-ou/QoE_experiments/raw/master/videos/" + vid_folder + "/";
 var reference_src = video_url + "1.mp4";
