@@ -121,7 +121,7 @@ var post_next = async (ctx, next) => {
         // set new cookie
         let value =  Buffer.from(JSON.stringify(user)).toString('base64');
         ctx.cookies.set('name', value);
-        if  (user.video_order[user.count] == 2) {
+        if  (user.count == 2) {
             ctx.render('bad_video.html', {
                 title: title, video_src : video_src
             });
