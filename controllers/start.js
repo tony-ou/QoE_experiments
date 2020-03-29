@@ -121,9 +121,15 @@ var post_next = async (ctx, next) => {
         // set new cookie
         let value =  Buffer.from(JSON.stringify(user)).toString('base64');
         ctx.cookies.set('name', value);
-        ctx.render('2video.html', {
-            title: title, reference: reference_src,  video_src: video_src
-        });
+        if  (user.video_order[user.count] == 2) {
+            ctx.render('bad_video.html', {
+                title: title, video_src : video_src
+            });
+        } else {
+            ctx.render('2video.html', {
+                title: title, reference: reference_src,  video_src: video_src
+            });
+        }
     }
     else {
          // set new cookie
