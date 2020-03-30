@@ -2,9 +2,9 @@
 var getOder = require('../models/random');
 var fs = require('fs');
 
-const vid_folder = "Soccer_720p_2_500k_360";
+const vid_folder = "Soccer_720p_2_3000k_720";
 var vid_path = "./videos/" + vid_folder;
-var video_url = "https://raw.githubusercontent.com/tony-ou/QoE_experiments/master/videos/" + vid_folder + "/";
+var video_url = "https://raw.githubusercontent.com/tony-ou/QoEProject_3/master/videos/" + vid_folder + "/";
 var reference_src = video_url + "1.mp4";
 var num_vids;
 
@@ -32,6 +32,7 @@ var post_example = async (ctx, next) => {
         result : [],
         video_time : [],
         grade_time : [],
+        test: [],
         start : start
     };
     for (i = 0; i < num_vids; i++)
@@ -104,9 +105,15 @@ var post_back2video = async (ctx, next) => {
 var post_next = async (ctx, next) => {
     var user = ctx.state.user;
     var grade = ctx.request.body.sentiment;
-    user.result.push(grade);
     var end = new Date().getTime();
     var exe_time = end - user.start;
+
+    var attention_test = Number(ctx.request.body.blur)+ Number(ctx.request.body.stall);
+  
+    user.test.push(attention_test);
+    user.result.push(grade);
+    
+
     user.grade_time[user.count-1] += exe_time;
 
     user.start = end;
@@ -150,9 +157,11 @@ var post_end = async (ctx, next) => {
     console.log(user.result);
     var filename = "./results/" + user.mturkID + ".txt";
     var write_data = [];
+    var write_test = [];
     var write_video_time = [], write_grade_time =[];
     for(var i in user.video_order) {
         write_data[user.video_order[i] - 1] = user.result[i];
+        write_test[user.video_order[i] - 1] = user.test[i];
         write_video_time[user.video_order[i] - 1] = user.video_time[i];
         write_grade_time[user.video_order[i] - 1] = user.grade_time[i];
     }
@@ -160,7 +169,7 @@ var post_end = async (ctx, next) => {
                 write_video_time + '\n'
                  + write_grade_time + '\n' + user.mturkID + '\n' 
                  + user.device + '\n' + user.age + '\n' 
-                 + user.network + '\n' + user.reason, function(err) {
+                 + user.network + '\n' + user.reason +'\n'+  write_test, function(err) {
         if(err) {
             return console.log(err);
         }

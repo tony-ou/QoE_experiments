@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col" >
                      <div class="dash-video-player">
-                        <video id="l_video" preload="metadata" width="1024" height="576"  controls="controls" src={{reference}} ></video>
+                        <video id="l_video" preload="metadata" width="1024" height="576"  controls="controls"></video>
                     <div  style="text-align:center"> 
                         <h2>Best Quality Reference</h2> 
                     </div>
@@ -51,7 +51,7 @@
 
                 <div class="col" >
                     <div class="dash-video-player">
-                        <video id="r_video" preload="metadata" width="1024" height="576"  controls="controls" src={{video_src}} ></video>
+                        <video id="r_video" preload="metadata" width="1024" height="576"  controls="controls" ></video>
                         <div  style="text-align:center"> 
                         <h2> Test Video</h2> 
                     </div>
@@ -88,7 +88,6 @@ document.getElementById('r_video').addEventListener('ended',myHandler,false);
     // Check if the XMLHttpRequest object has a "withCredentials" property.
     // "withCredentials" only exists on XMLHTTPRequest2 objects.
     xhr.open(method, url, true);
-    alert('gg2');
   } else if (typeof XDomainRequest != "undefined") {
     
     // Otherwise, check if XDomainRequest.
