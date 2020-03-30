@@ -80,6 +80,74 @@ document.getElementById('r_video').addEventListener('ended',myHandler,false);
         document.getElementById("form_container").style.display="block";
     }
 </script>
+<script>
+  function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+    alert('gg2');
+  } else if (typeof XDomainRequest != "undefined") {
+    
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;a
+
+  }
+  return xhr;
+}
+
+
+var req =  createCORSRequest('GET','{{video_src}}');
+req.responseType = 'blob';
+
+
+
+req.onload = function() {
+   // Onload is triggered even on 404
+   // so we need to check the status code
+   if (this.status === 200) {
+      var videoBlob = this.response;
+      var vid = URL.createObjectURL(videoBlob); // IE10+
+      // Video is now downloaded
+      // and we can set it as source on the video element
+      document.getElementById('r_video').src = vid;
+   }
+}
+
+
+req.send();
+
+
+var req =  createCORSRequest('GET','{{reference}}');
+req.responseType = 'blob';
+
+req.onload = function() {
+   // Onload is triggered even on 404
+   // so we need to check the status code
+   if (this.status === 200) {
+      var videoBlob = this.response;
+      var vid = URL.createObjectURL(videoBlob); // IE10+
+      // Video is now downloaded
+      // and we can set it as source on the video element
+      document.getElementById('l_video').src = vid;
+      alert('video loaded');
+   }
+}
+
+
+req.send();
+
+</script>
+
 </html>
 
 
