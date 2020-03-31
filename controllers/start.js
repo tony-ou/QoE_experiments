@@ -2,10 +2,11 @@
 var getOder = require('../models/random');
 var fs = require('fs');
 
-const vid_folder = "Soccer_720p_2_3000k_720";
+const vid_folder = "Soccer_720p_0_500k_360";
 var vid_path = "./videos/" + vid_folder;
-var video_url = "https://raw.githubusercontent.com/tony-ou/QoEProject_3/master/videos/" + vid_folder + "/";
-var reference_src = video_url + "1.mp4";
+var video_url = "https://raw.githubusercontent.com/tony-ou/QoE_experiments/master/videos/" + vid_folder + "/";
+var best_quality = video_url + "1.mp4";
+var worst_quality = video_url + "2.mp4";
 var num_vids;
 
 fs.readdir(vid_path, function(err, files) {
@@ -14,14 +15,27 @@ fs.readdir(vid_path, function(err, files) {
 });
 
 var post_example = async (ctx, next) => {
-    var mturkID = ctx.request.body.MTurkID;
+    ctx.render('example.html', {
+    });
+}
+
+var post_start = async (ctx, next) => {
+       var mturkID = ctx.request.body.MTurkID;
     var device = ctx.request.body.device;
     var age = ctx.request.body.age;
     var network = ctx.request.body.network;
     var video_order = [1, 2, ...getOder(3,num_vids)];
     console.log(mturkID, device, age);
     var start = new Date().getTime();
-
+    var results = fs.readdirSync('./results/')
+    
+    if (results.indexOf(mturkID+ '.txt') > -1){
+        flag = false;
+        ctx.render('repeat.html', {
+        });
+        return;
+    }
+    
     let user = {
         mturkID : mturkID,
         device : device,
@@ -42,18 +56,7 @@ var post_example = async (ctx, next) => {
     }
     let value =  Buffer.from(JSON.stringify(user)).toString('base64');
     ctx.cookies.set('name', value);
-    ctx.render('example.html', {
-    });
-}
-
-var post_start = async (ctx, next) => {
-    var video_src = video_url + "1.mp4";
-    // https://github.com/michaelliao/learn-javascript/raw/master/video/vscode-nodejs.mp4
-    // very interesting url!
-
-    var title = "1/" + num_vids;
-    ctx.render('video.html', {
-        title: title, video_src : video_src
+    ctx.render('training_page.html', {
     });
 }
 
@@ -74,6 +77,36 @@ var post_grade= async (ctx, next) => {
     });
 }
 
+var post_first = async (ctx, next) => {
+    var video_src = video_url + "1.mp4";
+    // https://github.com/michaelliao/learn-javascript/raw/master/video/vscode-nodejs.mp4
+    // very interesting url!
+
+    var title = "1/" + num_vids;
+    ctx.render('video.html', {
+        title: title, video_src : video_src
+    });
+}
+var post_training = async (ctx, next) => {
+    // https://github.com/michaelliao/learn-javascript/raw/master/video/vscode-nodejs.mp4
+    // very interesting url!
+
+    var title = "1/" + num_vids;
+    ctx.render('training_page.html', {
+    });
+}
+
+
+var post_reference = async (ctx, next) => {
+    var video_src = video_url + "1.mp4";
+    // https://github.com/michaelliao/learn-javascript/raw/master/video/vscode-nodejs.mp4
+    // very interesting url!
+
+    var title = "1/" + num_vids;
+    ctx.render('reference.html', {
+        best_quality: best_quality, worst_quality : worst_quality
+    });
+}
 
 var post_back2video = async (ctx, next) => {
     var user = ctx.state.user;
@@ -97,10 +130,12 @@ var post_back2video = async (ctx, next) => {
     }
     else { 
         ctx.render('2video.html', {
-        title: title, reference: reference_src,  video_src: video_src
+        title: title,  video_src: video_src
         });
     }
 }
+
+
 
 var post_next = async (ctx, next) => {
     var user = ctx.state.user;
@@ -129,9 +164,15 @@ var post_next = async (ctx, next) => {
             ctx.render('bad_video.html', {
                 title: title, video_src : video_src
             });
-        } else {
+        } 
+        else if (user.count == 3){
+          ctx.render('test_page.html', {
+                title: title, video_src : video_src
+            });  
+        }
+        else  {
             ctx.render('2video.html', {
-                title: title, reference: reference_src,  video_src: video_src
+                title: title,  video_src: video_src
             });
         }
     }
@@ -186,9 +227,12 @@ var post_end = async (ctx, next) => {
 
 module.exports = {
     'POST /start' : post_start,
+    'POST /training' : post_training,
     'POST /grade': post_grade,
     'POST /back2video':post_back2video,
     'POST /next' : post_next,
     'POST /end' : post_end,
-    'POST /example' : post_example 
+    'POST /example' : post_example,
+    'POST /first': post_first,
+    'POST /reference': post_reference
 };
