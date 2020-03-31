@@ -2,11 +2,13 @@
 var getOder = require('../models/random');
 var fs = require('fs');
 
+
 const vid_folder = "Soccer_720p_0_500k_360";
 var vid_path = "./videos/" + vid_folder;
 var video_url = "https://raw.githubusercontent.com/tony-ou/QoE_experiments/master/videos/" + vid_folder + "/";
 var best_quality = video_url + "1.mp4";
 var worst_quality = video_url + "2.mp4";
+
 var num_vids;
 
 fs.readdir(vid_path, function(err, files) {
