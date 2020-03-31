@@ -8,20 +8,20 @@
 <div class="col-md-6 col-md-offset-3">
     <form name="myform" action= "next" method="POST" style="text-align:center">
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs">
-            <label class="btn btn-default"><input id="StronglyPositive" name="sentiment" required="" type="radio" value="5" /><h4>Excellent (Imperceptible Impairment)</h4>
+            <label class="btn btn-default"><input id="StronglyPositive" name="sentiment" required="" type="radio" value="5" /><h4>Excellent (Imperceptible Quality Damage)</h4>
             </label>
-            <label class="btn btn-default"><input id="Positive" name="sentiment" required="" type="radio" value="4" /><h4>Good (Perceptible But Not Annoying Impairment)</h4>
+            <label class="btn btn-default"><input id="Positive" name="sentiment" required="" type="radio" value="4" /><h4>Good (Perceptible But Not Annoying Quality Damage)</h4>
             </label>
-            <label class="btn btn-default"><input id="Neutral" name="sentiment" required="" type="radio" value="3" /><h4>Fair (Slightly Annoying Impairment)</h4>
+            <label class="btn btn-default"><input id="Neutral" name="sentiment" required="" type="radio" value="3" /><h4>Fair (Slightly Annoying Quality Damage)</h4>
             </label>
-            <label class="btn btn-default"> <input id="Negative" name="sentiment" required="" type="radio" value="2" /><h4>Poor (Annoying Impairment)</h4>
+            <label class="btn btn-default"> <input id="Negative" name="sentiment" required="" type="radio" value="2" /><h4>Poor (Annoying Quality Damage)</h4>
             </label>
-            <label class="btn btn-default"> <input id="StronglyNegative" name="sentiment" required="" type="radio" value="1" /><h4>Bad (Very Annoying Impairment)</h4>
+            <label class="btn btn-default"> <input id="StronglyNegative" name="sentiment" required="" type="radio" value="1" /><h4>Bad (Very Annoying Quality Damage)</h4>
             </label>
         </div>
 
-        <h2> <b>Next two questions ask what impairments appeared in the test video. </b> (If last video is the BEST quality reference, you must answer <b>"No"</b> to both questions.) </h2>
-        <h3> Did you notice blur (a lower resolution) in last video? </h3>
+        <h2> <b>Next two questions serve as attention checks. </b> Select the answer that aligns with your observation of last video (If last video is the BEST quality reference, you must answer <b>"No"</b> to both questions.) </h2>
+        <h3> Did you notice resolution decrease? </h3>
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs2">
            <label class="btn btn-default"><input id="yes" name="blur" required=""   type="radio" value="1" /><h4>Yes</h4>
             </label>
@@ -30,7 +30,7 @@
         </div>
 
 
-        <h3> Did you notice stalling (pause of length at least 1 second) in last video? </h3>
+        <h3> Did you notice video pause of more than 1 second?  </h3>
         <div class="btn-group-vertical" data-toggle="buttons" id="Inputs3">
            <label class="btn btn-default"><input id="yes" name="stall" required=""   type="radio" value="4" /><h4>Yes</h4>
             </label>

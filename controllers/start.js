@@ -3,7 +3,7 @@ var getOder = require('../models/random');
 var fs = require('fs');
 
 
-const vid_folder = "Soccer_720p_0_500k_360";
+const vid_folder = "test2";
 var vid_path = "./videos/" + vid_folder;
 var video_url = "https://raw.githubusercontent.com/tony-ou/QoE_experiments/master/videos/" + vid_folder + "/";
 var best_quality = video_url + "1.mp4";
@@ -220,7 +220,7 @@ var post_end = async (ctx, next) => {
     // clear cookie
     ctx.cookies.set('name','');
     
-    var return_code = "0lMq2GKqLDSUgYAGc=";
+    var return_code = vid_folder;
     ctx.render('ending.html', {
         title: 'Thank you', return_code:return_code
     });
